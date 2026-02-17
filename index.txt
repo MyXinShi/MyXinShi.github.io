@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8"> 
-<title>菜鸟教程(runoob.com)</title> 
+<title>我的 web 列表</title> 
 <style>
 	body {width:1000px;height:auto; margin: auto;}
 
