@@ -27,8 +27,8 @@
 <meta property="og:site_name" content="心适">
 <meta property="og:description" content="词语拼音管理系统              * {             margin: 0;             padding: 0;             box-sizing: border-box;         }          body {             font-family: &quot;Microsoft YaHei&quot;, Aria">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-29T00:52:24.252Z">
-<meta property="article:modified_time" content="2026-04-29T00:49:36.575Z">
+<meta property="article:published_time" content="2026-04-29T02:16:20.913Z">
+<meta property="article:modified_time" content="2026-04-29T01:25:55.006Z">
 <meta property="article:author" content="XinShi">
 <meta property="article:tag" content="安心、追梦">
 <meta name="twitter:card" content="summary">
@@ -454,13 +454,13 @@ async function loadAllWords() {
     renderPage();
 }
 
-// 搜索
+// 搜索：词语 + 拼音 + 备注 三列全部支持模糊查询
 async function searchWords() {
-    const kw = document.getElementById("searchKeyword").value;
+    const kw = document.getElementById("searchKeyword").value.trim();
     let { data } = await sb
         .from("ciyupinyin")
         .select("*")
-        .or(`word.ilike.%${kw}%,pinyin.ilike.%${kw}%`)
+        .or(`word.ilike.%${kw}%,pinyin.ilike.%${kw}%,remark.ilike.%${kw}%`)
         .order(sortField, { ascending: sortOrder === "asc" });
 
     allData = data || [];
