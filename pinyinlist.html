@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"myxinshi.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="词语拼音管理系统              * {             margin: 0;             padding: 0;             box-sizing: border-box;         }          body {             font-family: &quot;Microsoft YaHei&quot;, Aria">
+<meta property="og:type" content="website">
+<meta property="og:title" content="心适">
+<meta property="og:url" content="https://myxinshi.github.io/pinyinlist.html">
+<meta property="og:site_name" content="心适">
+<meta property="og:description" content="词语拼音管理系统              * {             margin: 0;             padding: 0;             box-sizing: border-box;         }          body {             font-family: &quot;Microsoft YaHei&quot;, Aria">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-29T00:52:24.252Z">
+<meta property="article:modified_time" content="2026-04-29T00:49:36.575Z">
+<meta property="article:author" content="XinShi">
+<meta property="article:tag" content="安心、追梦">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://myxinshi.github.io/pinyinlist">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 心适
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">心适</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">安心追梦</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-web_index">
+
+    <a href="/web_index.html" rel="section"><i class="fa fa-home fa-fw"></i>web_index</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>词语拼音管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: #f7f8fc;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2d3748;
+            font-size: 24px;
+        }
+
+        .card {
+            background: #fbfcff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #4a5568;
+            font-size: 16px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .btn-blue { background: #3b82f6; }
+        .btn-green { background: #10b981; }
+        .btn-red { background: #ef4444; }
+        .btn-orange { background: #f59e0b; }
+        .btn-purple { background: #8b5cf6; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #eff6ff;
+            padding: 12px;
+            text-align: left;
+            font-weight: normal;
+            color: #3b82f6;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pagination {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .page-btn {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .page-btn.active {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 480px;
+            padding: 24px;
+            border-radius: 16px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            tr {
+                margin-bottom: 12px;
+                border: 1px solid #eee;
+                border-radius: 8px;
+                padding: 10px;
+            }
+            td {
+                padding: 8px 0;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>词语拼音管理系统</h1>
+
+    <!-- 登录 -->
+    <div class="card" id="loginSection">
+        <h3>管理员登录</h3>
+        <input type="password" id="adminPassword" placeholder="请输入管理密码">
+        <button class="btn-blue" onclick="checkPassword()">登录</button>
+    </div>
+
+    <!-- 主功能区 -->
+    <div id="mainContent" class="hidden">
+        <!-- 添加 -->
+        <div class="card">
+            <h3>➕ 添加词语</h3>
+            <input id="word" placeholder="词语">
+            <input id="pinyin" placeholder="拼音">
+            <textarea id="remark" rows="2" placeholder="备注"></textarea>
+            <button class="btn-green" onclick="addWord()">添加</button>
+        </div>
+
+        <!-- 批量导入 -->
+        <div class="card">
+            <h3>📤 批量导入 Excel</h3>
+            <input type="file" id="excelFile" accept=".xlsx,.xls">
+            <button class="btn-purple" onclick="importExcel()">导入数据</button>
+        </div>
+
+        <!-- 查询 + 导出 + 排序 + 批量删除 -->
+        <div class="card">
+            <h3>🔍 查询 / 导出 / 排序 / 批量操作</h3>
+            <input id="searchKeyword" placeholder="输入关键词查询">
+            <button class="btn-blue" onclick="searchWords()">查询</button>
+            <button class="btn-blue" onclick="loadAllWords()">显示全部</button>
+            <button class="btn-orange" onclick="exportExcel()">导出 Excel</button>
+            <button class="btn-orange" onclick="setSort('id', 'asc')">按ID升序</button>
+            <button class="btn-orange" onclick="setSort('word', 'asc')">按词语升序</button>
+            <button class="btn-red" onclick="batchDelete()">批量删除</button>
+        </div>
+
+        <!-- 列表 -->
+        <div class="card">
+            <h3>📋 词语列表</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" onclick="toggleAll(this)"> 全选</th>
+                        <th>ID</th>
+                        <th>词语</th>
+                        <th>拼音</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="wordList"></tbody>
+            </table>
+
+            <!-- 分页 -->
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 修改弹窗 -->
+<div id="editModal" class="hidden">
+    <div class="modal-content">
+        <h3>修改内容</h3>
+        <input type="hidden" id="edit_id">
+        <input id="edit_word" placeholder="词语"><br><br>
+        <input id="edit_pinyin" placeholder="拼音"><br><br>
+        <textarea id="edit_remark" placeholder="备注"></textarea><br><br>
+        <button class="btn-green" onclick="saveUpdate()">保存</button>
+        <button class="btn-red" onclick="closeModal()">取消</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+// ===================== 配置区 =====================
+        // ========== 配置区：请替换为你自己的信息 ==========
+        const SUPABASE_URL = "https://ujqfiphuffjeihdvlupf.supabase.co"; // 你的 Project URL
+        const SUPABASE_ANON_KEY = "sb_publishable_7qutUQOaUp_HKon9uLK6PQ_LkM_Bx0y"; // 你的 anon public key
+        const ADMIN_PASSWORD = "wm001133"; // 自定义管理密码
+        // =================================================
+// ====================================================
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let allData = [];
+let pageSize = 10;
+let currentPage = 1;
+let sortField = "id";
+let sortOrder = "asc";
+
+// 登录
+function checkPassword() {
+    const p = document.getElementById("adminPassword").value;
+    if (p === ADMIN_PASSWORD) {
+        document.getElementById("loginSection").classList.add("hidden");
+        document.getElementById("mainContent").classList.remove("hidden");
+        loadAllWords();
+    } else {
+        alert("密码错误");
+    }
+}
+
+// 加载全部
+async function loadAllWords() {
+    let { data, error } = await sb
+        .from("ciyupinyin")
+        .select("*")
+        .order(sortField, { ascending: sortOrder === "asc" });
+
+    allData = data || [];
+    renderPage();
+}
+
+// 搜索
+async function searchWords() {
+    const kw = document.getElementById("searchKeyword").value;
+    let { data } = await sb
+        .from("ciyupinyin")
+        .select("*")
+        .or(`word.ilike.%${kw}%,pinyin.ilike.%${kw}%`)
+        .order(sortField, { ascending: sortOrder === "asc" });
+
+    allData = data || [];
+    currentPage = 1;
+    renderPage();
+}
+
+// 排序
+function setSort(field, order) {
+    sortField = field;
+    sortOrder = order;
+    loadAllWords();
+}
+
+// 添加
+async function addWord() {
+    const word = document.getElementById("word").value.trim();
+    const pinyin = document.getElementById("pinyin").value.trim();
+    const remark = document.getElementById("remark").value.trim();
+
+    if (!word || !pinyin) {
+        alert("词语和拼音不能为空");
+        return;
+    }
+
+    await sb.from("ciyupinyin").insert([{ word, pinyin, remark }]);
+    alert("添加成功");
+    document.getElementById("word").value = "";
+    document.getElementById("pinyin").value = "";
+    document.getElementById("remark").value = "";
+    loadAllWords();
+}
+
+// 删除
+async function deleteWord(id) {
+    if (!confirm("确定删除？")) return;
+    await sb.from("ciyupinyin").delete().eq("id", id);
+    loadAllWords();
+}
+
+// 打开编辑
+function openEdit(id, word, pinyin, remark) {
+    document.getElementById("edit_id").value = id;
+    document.getElementById("edit_word").value = word;
+    document.getElementById("edit_pinyin").value = pinyin;
+    document.getElementById("edit_remark").value = remark;
+    document.getElementById("editModal").className = "modal";
+}
+
+// 关闭弹窗
+function closeModal() {
+    document.getElementById("editModal").className = "hidden";
+}
+
+// 保存修改
+async function saveUpdate() {
+    const id = document.getElementById("edit_id").value;
+    const word = document.getElementById("edit_word").value;
+    const pinyin = document.getElementById("edit_pinyin").value;
+    const remark = document.getElementById("edit_remark").value;
+
+    await sb.from("ciyupinyin").update({ word, pinyin, remark }).eq("id", id);
+    alert("修改成功");
+    closeModal();
+    loadAllWords();
+}
+
+// 分页渲染
+function renderPage() {
+    const totalPage = Math.ceil(allData.length / pageSize);
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+    const pageData = allData.slice(start, end);
+
+    let html = "";
+    pageData.forEach(item => {
+        html += `<tr>
+            <td><input type="checkbox" class="item-checkbox" data-id="${item.id}"></td>
+            <td>${item.id}</td>
+            <td>${item.word}</td>
+            <td>${item.pinyin}</td>
+            <td>${item.remark || ""}</td>
+            <td>
+                <button class="btn-green" onclick="openEdit(${item.id},'${item.word}','${item.pinyin}','${item.remark || ""}')">修改</button>
+                <button class="btn-red" onclick="deleteWord(${item.id})">删除</button>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("wordList").innerHTML = html;
+
+    // 分页按钮
+    let pageHtml = "";
+    for (let i = 1; i <= totalPage; i++) {
+        pageHtml += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+    }
+    document.getElementById("pagination").innerHTML = pageHtml;
+}
+
+function goPage(page) {
+    currentPage = page;
+    renderPage();
+}
+
+// 导出Excel
+function exportExcel() {
+    const ws = XLSX.utils.json_to_sheet(allData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "词语拼音");
+    XLSX.writeFile(wb, "词语拼音表.xlsx");
+}
+
+// 全选
+function toggleAll(box) {
+    document.querySelectorAll(".item-checkbox").forEach(cb => {
+        cb.checked = box.checked;
+    });
+}
+
+// 批量删除
+async function batchDelete() {
+    const checks = document.querySelectorAll(".item-checkbox:checked");
+    if (checks.length === 0) {
+        alert("请先选择要删除的项");
+        return;
+    }
+    if (!confirm(`确定删除选中的 ${checks.length} 条数据？`)) return;
+
+    const ids = Array.from(checks).map(cb => cb.dataset.id);
+    await sb.from("ciyupinyin").delete().in("id", ids);
+    alert("批量删除成功");
+    loadAllWords();
+}
+
+// 导入Excel
+function importExcel() {
+    const fileInput = document.getElementById("excelFile");
+    if (!fileInput.files[0]) {
+        alert("请选择Excel文件");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+        const data = new Uint8Array(e.target.result);
+        const wb = XLSX.read(data, { type: "array" });
+        const firstSheet = wb.Sheets[wb.SheetNames[0]];
+        const json = XLSX.utils.sheet_to_json(firstSheet);
+
+        if (json.length === 0) {
+            alert("文件无数据");
+            return;
+        }
+
+        const insertData = json.map(row => ({
+            word: row.词语 || "",
+            pinyin: row.拼音 || "",
+            remark: row.备注 || ""
+        }));
+
+        await sb.from("ciyupinyin").insert(insertData);
+        alert(`导入成功 ${insertData.length} 条数据`);
+        loadAllWords();
+    };
+    reader.readAsArrayBuffer(fileInput.files[0]);
+}
+</script>
+
+</body>
+</html>
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">词语拼音管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loginSection"><span class="nav-number">1.1.</span> <span class="nav-text">管理员登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.2.</span> <span class="nav-text">➕ 添加词语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.3.</span> <span class="nav-text">📤 批量导入 Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.4.</span> <span class="nav-text">🔍 查询 &#x2F; 导出 &#x2F; 排序 &#x2F; 批量操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.5.</span> <span class="nav-text">📋 词语列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#editModal"><span class="nav-number">1.6.</span> <span class="nav-text">修改内容</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XinShi"
+      src="/images/mylogo.jpg">
+  <p class="site-author-name" itemprop="name">XinShi</p>
+  <div class="site-description" itemprop="description">生命不止、梦不停歇！安顿好心灵，去追逐梦想！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XinShi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
