@@ -27,8 +27,8 @@
 <meta property="og:site_name" content="心适">
 <meta property="og:description" content="词语拼音管理系统              * {             margin: 0;             padding: 0;             box-sizing: border-box;         }          body {             font-family: &quot;Microsoft YaHei&quot;, Aria">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-30T00:13:36.280Z">
-<meta property="article:modified_time" content="2026-04-30T00:13:36.280Z">
+<meta property="article:published_time" content="2026-04-30T00:58:57.355Z">
+<meta property="article:modified_time" content="2026-04-30T00:58:57.355Z">
 <meta property="article:author" content="XinShi">
 <meta property="article:tag" content="安心、追梦">
 <meta name="twitter:card" content="summary">
@@ -403,7 +403,7 @@
 
         <!-- 批量导入 -->
         <div class="card">
-            <h3>📤 批量导入 Excel</h3>
+            <h3>📤 批量导入 Excel（表头：词语 | 拼音 | 备注）</h3>
             <input type="file" id="excelFile" accept=".xlsx,.xls">
             <button class="btn-purple" onclick="importExcel()">导入数据</button>
         </div>
@@ -655,34 +655,61 @@ async function batchDelete() {
 }
 
 // 导入Excel
-function importExcel() {
+async function importExcel() {
     const fileInput = document.getElementById("excelFile");
-    if (!fileInput.files[0]) {
-        alert("请选择Excel文件");
+    if (!fileInput) {
+        alert("错误：找不到文件上传控件，请检查HTML里的id是否为excelFile");
+        return;
+    }
+    if (!fileInput.files || !fileInput.files[0]) {
+        alert("请先选择Excel文件");
         return;
     }
 
     const reader = new FileReader();
     reader.onload = async function(e) {
-        const data = new Uint8Array(e.target.result);
-        const wb = XLSX.read(data, { type: "array" });
-        const firstSheet = wb.Sheets[wb.SheetNames[0]];
-        const json = XLSX.utils.sheet_to_json(firstSheet);
+        try {
+            const data = new Uint8Array(e.target.result);
+            const wb = XLSX.read(data, { type: "array" });
+            const firstSheet = wb.Sheets[wb.SheetNames[0]];
+            const json = XLSX.utils.sheet_to_json(firstSheet, { defval: "" });
 
-        if (json.length === 0) {
-            alert("文件无数据");
-            return;
+            if (!json || json.length === 0) {
+                alert("文件无有效数据");
+                return;
+            }
+
+            // 适配你现在的表头：词语 / 拼音 / 备注
+            const insertArr = [];
+            json.forEach(row => {
+                const word = (row.词语 || "").toString().trim();
+                const pinyin = (row.拼音 || "").toString().trim();
+                const remark = (row.备注 || "").toString().trim();
+
+                if (word) {
+                    insertArr.push({ word, pinyin, remark });
+                }
+            });
+
+            if (insertArr.length === 0) {
+                alert("没有可导入的有效数据（词语不能为空）");
+                return;
+            }
+
+            const { error } = await sb.from("ciyupinyin").insert(insertArr);
+            if (error) {
+                console.error("入库失败：", error);
+                alert("入库失败：" + error.message);
+                return;
+            }
+
+            alert(`成功导入 ${insertArr.length} 条数据`);
+            fileInput.value = "";
+            loadAllWords();
+        } catch (err) {
+            console.error("导入异常：", err);
+            alert("导入出错：" + err.message);
         }
-
-        const insertData = json.map(row => ({
-            word: row.词语 || "",
-            pinyin: row.拼音 || "",
-            remark: row.备注 || ""
-        }));
-
-        await sb.from("ciyupinyin").insert(insertData);
-        alert(`导入成功 ${insertData.length} 条数据`);
-        loadAllWords();
     };
     reader.readAsArrayBuffer(fileInput.files[0]);
 }
@@ -750,7 +777,7 @@ function importExcel() {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">词语拼音管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loginSection"><span class="nav-number">1.1.</span> <span class="nav-text">管理员登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.2.</span> <span class="nav-text">➕ 添加词语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.3.</span> <span class="nav-text">📤 批量导入 Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.4.</span> <span class="nav-text">🔍 查询 &#x2F; 导出 &#x2F; 排序 &#x2F; 批量操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.5.</span> <span class="nav-text">📋 词语列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#editModal"><span class="nav-number">1.6.</span> <span class="nav-text">修改内容</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">词语拼音管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loginSection"><span class="nav-number">1.1.</span> <span class="nav-text">管理员登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.2.</span> <span class="nav-text">➕ 添加词语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.3.</span> <span class="nav-text">📤 批量导入 Excel（表头：词语 | 拼音 | 备注）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.4.</span> <span class="nav-text">🔍 查询 &#x2F; 导出 &#x2F; 排序 &#x2F; 批量操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mainContent"><span class="nav-number">1.5.</span> <span class="nav-text">📋 词语列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#editModal"><span class="nav-number">1.6.</span> <span class="nav-text">修改内容</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
