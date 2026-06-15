@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"myxinshi.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="单词背诵系统              * {             box-sizing: border-box;             margin: 0;             padding: 0;             font-family: system-ui, -apple-system, sans-serif;         }">
+  <meta name="description" content="单词背诵系统              * {             box-sizing: border-box;             margin: 0;             padding: 0;             font-family: system-ui, -apple-system, sans-serif;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="心适">
 <meta property="og:url" content="https://myxinshi.github.io/word.html">
 <meta property="og:site_name" content="心适">
-<meta property="og:description" content="单词背诵系统              * {             box-sizing: border-box;             margin: 0;             padding: 0;             font-family: system-ui, -apple-system, sans-serif;         }">
+<meta property="og:description" content="单词背诵系统              * {             box-sizing: border-box;             margin: 0;             padding: 0;             font-family: system-ui, -apple-system, sans-serif;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-15T09:22:44.181Z">
-<meta property="article:modified_time" content="2026-06-15T09:20:20.172Z">
+<meta property="article:published_time" content="2026-06-15T23:54:34.859Z">
+<meta property="article:modified_time" content="2026-06-15T23:54:34.859Z">
 <meta property="article:author" content="XinShi">
 <meta property="article:tag" content="安心、追梦">
 <meta name="twitter:card" content="summary">
@@ -175,7 +175,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 手机视口强制适配，禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>单词背诵系统</title>
     <style>
         * {
@@ -186,15 +187,15 @@
         }
         body {
             background-color: #f7f8fc;
-            padding: 20px;
-            max-width: 1200px;
+            padding: 12px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
-        /* 登录页样式 */
+        /* 登录页面 手机适配 */
         .login-wrap {
             width: 100%;
-            height: 80vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -202,49 +203,53 @@
         }
         .login-box {
             background: #fff;
-            padding: 40px 30px;
-            border-radius: 10px;
+            padding: 30px 20px;
+            border-radius: 12px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            width: 350px;
+            width: 92%;
+            max-width: 360px;
         }
         .login-box h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 26px;
             color: #333;
+            font-size: 20px;
         }
         .login-item {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .login-item label {
             display: block;
             margin-bottom: 8px;
             color: #555;
+            font-size: 15px;
         }
         .login-item input {
             width: 100%;
-            padding: 12px;
+            padding: 14px 12px;
             border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 16px;
         }
         .login-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background-color: #2563eb;
             color: #fff;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
         }
         .login-tip {
             color: #ef4444;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 14px;
             display: none;
+            font-size: 14px;
         }
 
-        /* 主系统页面 默认隐藏 */
+        /* 主系统 默认隐藏 */
         .main-system {
             display: none;
         }
@@ -252,27 +257,35 @@
         h1 {
             text-align: center;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 22px;
         }
         .subtitle {
             text-align: center;
             color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin-bottom: 16px;
         }
+        /* 标签栏 手机自适应 */
         .tabs {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             border-bottom: 2px solid #e0e0e0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar {
+            display: none;
         }
         .tab-btn {
-            padding: 12px 24px;
+            padding: 10px 14px;
             border: none;
             background: none;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .tab-btn.active {
             border-bottom-color: #2563eb;
@@ -282,22 +295,28 @@
         .tab-content {
             display: none;
             background: white;
-            padding: 20px;
+            padding: 12px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .tab-content.active {
             display: block;
         }
+        /* 表格横向滚动 适配手机窄屏 */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 12px;
+        }
         table {
+            min-width: 720px;
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
         }
         th, td {
-            padding: 12px;
+            padding: 10px 6px;
             text-align: left;
             border-bottom: 1px solid #eee;
+            font-size: 13px;
         }
         th {
             background-color: #f8fafc;
@@ -310,92 +329,110 @@
         .highlight {
             background-color: #dbeafe !important;
         }
+        /* 朗读按钮加大适配手机触屏 */
         .btn {
-            padding: 6px 12px;
+            padding: 8px 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
+            min-width: 60px;
         }
         .btn-read {
             background-color: #22c55e;
             color: white;
         }
+        /* 分页 手机紧凑布局 */
         .pagination {
-            margin-top: 15px;
+            margin-top: 14px;
             display: flex;
-            gap: 10px;
+            gap: 6px;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
         }
         .pagination button {
-            padding: 8px 16px;
+            padding: 7px 10px;
             background-color: #2563eb;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 13px;
         }
         .pagination button:disabled {
             background-color: #94a3b8;
             cursor: not-allowed;
         }
         .pagination input {
-            width: 60px;
-            padding: 6px;
+            width: 50px;
+            padding: 5px;
             border: 1px solid #ddd;
             border-radius: 4px;
             text-align: center;
+            font-size: 13px;
         }
         .form-group {
-            margin: 15px 0;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .form-group label {
-            display: inline-block;
-            width: 100px;
+            width: 70px;
             font-weight: 500;
+            font-size: 14px;
+            flex-shrink: 0;
         }
         .form-group input, .form-group select {
-            padding: 8px;
+            padding: 7px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            width: 200px;
+            flex: 1;
+            font-size: 14px;
         }
         .test-area {
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 16px;
+            padding: 14px;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
         }
         .explain-text {
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 16px;
+            margin-bottom: 12px;
             color: #1e293b;
+            line-height: 1.5;
+        }
+        #userAnswer {
+            width: 100% !important;
+            padding: 10px !important;
+            font-size: 16px;
+            margin-bottom: 10px;
         }
         .result {
-            margin-top: 10px;
+            margin-top: 8px;
             font-weight: 600;
+            font-size: 14px;
         }
         .correct { color: #22c55e; }
         .wrong { color: #ef4444; }
     </style>
 </head>
 <body>
-    <!-- 登录页面 -->
+    <!-- 登录页面（手机全屏适配） -->
     <div class="login-wrap" id="loginPage">
         <div class="login-box">
             <h2>单词背诵系统 - 登录</h2>
             <div class="login-item">
                 <label>登录密码</label>
-                <input type="password" id="pwdInput" placeholder="请输入密码">
+                <input type="password" id="pwdInput" placeholder="请输入密码123456">
             </div>
             <button class="login-btn" onclick="login()">登 录</button>
             <div class="login-tip" id="loginTip">密码错误，请重新输入</div>
         </div>
     </div>
 
-    <!-- 主系统页面（登录后显示） -->
+    <!-- 主系统页面（登录后显示，全移动端适配） -->
     <div class="main-system" id="mainPage">
         <h1>单词背诵系统</h1>
         <p class="subtitle" id="totalWords">词库加载中...</p>
@@ -408,25 +445,27 @@
 
         <!-- 单词表 -->
         <div id="wordList" class="tab-content active">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>单词</th>
-                        <th>音标</th>
-                        <th>释义</th>
-                        <th>多义短语</th>
-                        <th>派生词</th>
-                        <th>标签</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody id="wordTableBody">
-                    <tr>
-                        <td colspan="8" style="text-align: center; color: #666;">加载中...</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>单词</th>
+                            <th>音标</th>
+                            <th>释义</th>
+                            <th>多义短语</th>
+                            <th>派生词</th>
+                            <th>标签</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wordTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; color: #666;">加载中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="pagination">
                 <button id="prevBtn">上一页</button>
                 <span id="pageInfo"></span>
@@ -448,14 +487,14 @@
             </div>
             <div class="form-group">
                 <label>仅错题：</label>
-                <input type="checkbox" id="onlyWrong">
+                <input type="checkbox" id="onlyWrong" style="flex:unset;width:auto;">
             </div>
-            <button class="btn" style="background-color:#2563eb; color:white;" onclick="startTest()">开始测试</button>
+            <button class="btn" style="background-color:#2563eb; color:white; width:100%; padding:10px; font-size:15px;" onclick="startTest()">开始测试</button>
 
             <div class="test-area" id="testArea" style="display: none;">
                 <div class="explain-text" id="explainText"></div>
-                <input type="text" id="userAnswer" placeholder="请输入对应的单词" style="width: 300px; padding: 10px; font-size: 16px;">
-                <button class="btn" style="background-color:#2563eb; color:white; margin-left:10px;" onclick="submitAnswer()">提交</button>
+                <input type="text" id="userAnswer" placeholder="请输入对应的单词">
+                <button class="btn" style="background-color:#2563eb; color:white; width:100%; padding:10px; font-size:15px;" onclick="submitAnswer()">提交</button>
                 <div class="result" id="resultText"></div>
             </div>
         </div>
@@ -463,39 +502,41 @@
         <!-- 错误表 -->
         <div id="errorList" class="tab-content">
             <div class="form-group">
-                <label>排序方式：</label>
+                <label>排序：</label>
                 <select id="sortOption">
-                    <option value="id_asc">ID号从小到大</option>
-                    <option value="id_desc">ID号从大到小</option>
-                    <option value="time_desc">学习时间从后往前</option>
-                    <option value="time_asc">学习时间从前往后</option>
-                    <option value="wrong_desc">错误数从大到小</option>
-                    <option value="wrong_asc">错误数从小到大</option>
-                    <option value="rate_desc">错误率从大到小</option>
-                    <option value="rate_asc">错误率从小到大</option>
+                    <option value="id_asc">ID从小到大</option>
+                    <option value="id_desc">ID从大到小</option>
+                    <option value="time_desc">最新学习</option>
+                    <option value="time_asc">最早学习</option>
+                    <option value="wrong_desc">错误多→少</option>
+                    <option value="wrong_asc">错误少→多</option>
+                    <option value="rate_desc">错误率高→低</option>
+                    <option value="rate_asc">错误率低→高</option>
                 </select>
-                <button class="btn" style="background-color:#2563eb; color:white; margin-left:10px;" onclick="loadErrorList()">刷新</button>
+                <button class="btn" style="background-color:#2563eb; color:white;" onclick="loadErrorList()">刷新</button>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>单词</th>
-                        <th>音标</th>
-                        <th>释义</th>
-                        <th>多义短语</th>
-                        <th>派生词</th>
-                        <th>测试次数</th>
-                        <th>错误次数</th>
-                        <th>错误率</th>
-                    </tr>
-                </thead>
-                <tbody id="errorTableBody">
-                    <tr>
-                        <td colspan="9" style="text-align: center; color: #666;">加载中...</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>单词</th>
+                            <th>音标</th>
+                            <th>释义</th>
+                            <th>多义短语</th>
+                            <th>派生词</th>
+                            <th>测试次数</th>
+                            <th>错误次数</th>
+                            <th>错误率</th>
+                        </tr>
+                    </thead>
+                    <tbody id="errorTableBody">
+                        <tr>
+                            <td colspan="9" style="text-align: center; color: #666;">加载中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="pagination">
                 <button id="errorPrevBtn">上一页</button>
                 <span id="errorPageInfo"></span>
@@ -512,7 +553,7 @@
         const SUPABASE_ANON_KEY = "sb_publishable_7qutUQOaUp_HKon9uLK6PQ_LkM_Bx0y";
         const reqHeaders = { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" };
         // 固定登录密码
-        const LOGIN_PWD = "123456";
+        const LOGIN_PWD = "0610";
 
         let currentPage = 1;
         const pageSize = 10;
@@ -532,17 +573,14 @@
             const pwd = document.getElementById('pwdInput').value.trim();
             const tip = document.getElementById('loginTip');
             if (pwd === LOGIN_PWD) {
-                // 密码正确，切换到主页面
                 document.getElementById('loginPage').style.display = 'none';
                 document.getElementById('mainPage').style.display = 'block';
-                // 登录后加载单词表
                 loadWords();
             } else {
                 tip.style.display = 'block';
             }
         }
-
-        // 回车快捷登录
+        // 手机回车登录
         document.getElementById('pwdInput').addEventListener('keydown', function(e){
             if(e.key === 'Enter') login();
         });
@@ -558,6 +596,33 @@
                 if (btn.dataset.tab === 'errorList') loadErrorList();
             });
         });
+
+        // ========= 手机朗读核心适配函数 =========
+        function readWord(btn, word) {
+            // 检测浏览器是否支持语音朗读
+            if (!window.speechSynthesis) {
+                alert("当前浏览器不支持单词朗读，请更换Chrome/Safari打开");
+                return;
+            }
+            // 高亮当前行
+            document.querySelectorAll('#wordTableBody tr').forEach(tr => tr.classList.remove('highlight'));
+            btn.closest('tr').classList.add('highlight');
+            // 清空之前语音队列，防止多次点击重叠播报
+            window.speechSynthesis.cancel();
+            // 创建英文发音实例，适配iOS/安卓
+            const utter = new SpeechSynthesisUtterance(word);
+            utter.lang = "en-US"; // 强制美式英语，解决手机读中文音标乱读
+            utter.rate = 0.95; // 语速放慢适合背单词
+            // 直接用户点击触发，满足手机浏览器手势限制
+            window.speechSynthesis.speak(utter);
+        }
+        // 给所有朗读按钮增加触屏touchstart事件，兼容安卓/iOS触屏触发语音
+        document.addEventListener('touchstart', function(e){
+            if(e.target.classList.contains('btn-read')){
+                const wordText = e.target.getAttribute('onclick').match(/'([^']+)'/)[1];
+                readWord(e.target, wordText);
+            }
+        }, {passive:true});
 
         // 单词表加载
         async function loadWords() {
@@ -598,14 +663,6 @@
                 document.getElementById('wordTableBody').innerHTML = `<tr><td colspan="8" style="color:red;text-align:center;">加载失败</td></tr>`;
                 document.getElementById('totalWords').textContent = `词库加载失败`;
             }
-        }
-
-        function readWord(btn, word) {
-            document.querySelectorAll('#wordTableBody tr').forEach(tr => tr.classList.remove('highlight'));
-            btn.closest('tr').classList.add('highlight');
-            const u = new SpeechSynthesisUtterance(word);
-            u.lang = 'en-US';
-            speechSynthesis.speak(u);
         }
 
         document.getElementById('prevBtn').onclick = () => { if (currentPage > 1) { currentPage--; loadWords(); } };
@@ -661,11 +718,8 @@
             document.getElementById('resultText').innerHTML = ok ? '✅ 正确！' : `❌ 错误，正确答案是：${w.word}`;
             document.getElementById('resultText').className = 'result ' + (ok ? 'correct' : 'wrong');
 
-            if (ok) {
-                testCorrectCount++;
-            } else {
-                testWrongCount++;
-            }
+            if (ok) testCorrectCount++;
+            else testWrongCount++;
 
             await updateRecord(w.id, ok);
             setTimeout(() => { currentTestIndex++; showNextQuestion(); }, 1000);
