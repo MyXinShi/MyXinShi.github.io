@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"myxinshi.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="高中3500词学习系统  *{box-sizing:border-box;margin:0;padding:0} body{background:#f5f7fa;padding:20px;font-family:Arial} .main{max-width:700px;margin:80px auto;background:white;padding:40px;border-radius:">
+  <meta name="description" content="单词背诵系统              * {             box-sizing: border-box;             margin: 0;             padding: 0;             font-family: system-ui, -apple-system, sans-serif;         }">
 <meta property="og:type" content="website">
 <meta property="og:title" content="心适">
 <meta property="og:url" content="https://myxinshi.github.io/word.html">
 <meta property="og:site_name" content="心适">
-<meta property="og:description" content="高中3500词学习系统  *{box-sizing:border-box;margin:0;padding:0} body{background:#f5f7fa;padding:20px;font-family:Arial} .main{max-width:700px;margin:80px auto;background:white;padding:40px;border-radius:">
+<meta property="og:description" content="单词背诵系统              * {             box-sizing: border-box;             margin: 0;             padding: 0;             font-family: system-ui, -apple-system, sans-serif;         }">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-03T08:21:40.053Z">
-<meta property="article:modified_time" content="2026-06-03T08:21:40.029Z">
+<meta property="article:published_time" content="2026-06-15T09:22:44.181Z">
+<meta property="article:modified_time" content="2026-06-15T09:20:20.172Z">
 <meta property="article:author" content="XinShi">
 <meta property="article:tag" content="安心、追梦">
 <meta name="twitter:card" content="summary">
@@ -174,172 +174,616 @@
           <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>高中3500词学习系统</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#f5f7fa;padding:20px;font-family:Arial}
-.main{max-width:700px;margin:80px auto;background:white;padding:40px;border-radius:16px;box-shadow:0 2px 12px #eee}
-h2{margin-bottom:30px;color:#222;font-size:32px}
-input,select{width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
-button{padding:14px 30px;background:#007bff;color:white;border:none;border-radius:10px;cursor:pointer;margin:8px 0;font-size:16px}
-.gray{background:#666}
-.card{padding:25px;border:1px solid #eee;border-radius:12px;margin:20px 0}
-.word{font-size:28px;font-weight:bold;margin-bottom:10px}
-.phon{color:#666;margin-bottom:15px}
-.mean{line-height:1.6}
-.hide{display:none}
-#userBar{color:#007bff;margin-bottom:15px;font-size:18px}
-.wrong-item{padding:10px;border-bottom:1px solid #eee}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词背诵系统</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: #f7f8fc;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 登录页样式 */
+        .login-wrap {
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .login-item {
+            margin-bottom: 20px;
+        }
+        .login-item label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .login-item input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-tip {
+            color: #ef4444;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* 主系统页面 默认隐藏 */
+        .main-system {
+            display: none;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            border-bottom-color: #2563eb;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+        }
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        .highlight {
+            background-color: #dbeafe !important;
+        }
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-read {
+            background-color: #22c55e;
+            color: white;
+        }
+        .pagination {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .pagination button {
+            padding: 8px 16px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagination button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+        .pagination input {
+            width: 60px;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group label {
+            display: inline-block;
+            width: 100px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .test-area {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        .explain-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .correct { color: #22c55e; }
+        .wrong { color: #ef4444; }
+    </style>
 </head>
 <body>
-<div class="main">
-  <div id="loginBox">
-    <h2>用户登录</h2>
-    <select id="userSelect"><option>加载用户中…</option></select>
-    <input type="password" id="pwd" placeholder="输入密码">
-    <button onclick="login()">登录</button>
-  </div>
-
-  <div id="mainBox" class="hide">
-    <div id="userBar"></div>
-    <button onclick="goRecite()">背诵单词</button>
-    <button onclick="goTest()">单词测试</button>
-    <button onclick="goWrong()">我的错题</button>
-    <button onclick="goChangePwd()">修改密码</button>
-    <button class="gray" onclick="logout()">退出</button>
-
-    <div id="reciteBox" class="card hide">
-      <div class="word" id="rWord"></div>
-      <div class="phon" id="rPhon"></div>
-      <div class="mean" id="rMean"></div>
-      <button onclick="flipWord()">翻面</button>
-      <button class="gray" onclick="nextWord()">下一个</button>
+    <!-- 登录页面 -->
+    <div class="login-wrap" id="loginPage">
+        <div class="login-box">
+            <h2>单词背诵系统 - 登录</h2>
+            <div class="login-item">
+                <label>登录密码</label>
+                <input type="password" id="pwdInput" placeholder="请输入密码">
+            </div>
+            <button class="login-btn" onclick="login()">登 录</button>
+            <div class="login-tip" id="loginTip">密码错误，请重新输入</div>
+        </div>
     </div>
 
-    <div id="testBox" class="card hide">
-      <div id="tWord"></div>
-      <input id="tAns" placeholder="输入中文释义">
-      <button onclick="checkAns()">提交答案</button>
+    <!-- 主系统页面（登录后显示） -->
+    <div class="main-system" id="mainPage">
+        <h1>单词背诵系统</h1>
+        <p class="subtitle" id="totalWords">词库加载中...</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="wordList">单词表</button>
+            <button class="tab-btn" data-tab="studyTest">学习测试</button>
+            <button class="tab-btn" data-tab="errorList">错误表</button>
+        </div>
+
+        <!-- 单词表 -->
+        <div id="wordList" class="tab-content active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>单词</th>
+                        <th>音标</th>
+                        <th>释义</th>
+                        <th>多义短语</th>
+                        <th>派生词</th>
+                        <th>标签</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="wordTableBody">
+                    <tr>
+                        <td colspan="8" style="text-align: center; color: #666;">加载中...</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button id="prevBtn">上一页</button>
+                <span id="pageInfo"></span>
+                <input type="number" id="jumpPageInput" placeholder="页码" min="1">
+                <button id="jumpBtn">跳转</button>
+                <button id="nextBtn">下一页</button>
+            </div>
+        </div>
+
+        <!-- 学习测试 -->
+        <div id="studyTest" class="tab-content">
+            <div class="form-group">
+                <label>起始ID：</label>
+                <input type="number" id="startId" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label>结束ID：</label>
+                <input type="number" id="endId" min="1" value="15">
+            </div>
+            <div class="form-group">
+                <label>仅错题：</label>
+                <input type="checkbox" id="onlyWrong">
+            </div>
+            <button class="btn" style="background-color:#2563eb; color:white;" onclick="startTest()">开始测试</button>
+
+            <div class="test-area" id="testArea" style="display: none;">
+                <div class="explain-text" id="explainText"></div>
+                <input type="text" id="userAnswer" placeholder="请输入对应的单词" style="width: 300px; padding: 10px; font-size: 16px;">
+                <button class="btn" style="background-color:#2563eb; color:white; margin-left:10px;" onclick="submitAnswer()">提交</button>
+                <div class="result" id="resultText"></div>
+            </div>
+        </div>
+
+        <!-- 错误表 -->
+        <div id="errorList" class="tab-content">
+            <div class="form-group">
+                <label>排序方式：</label>
+                <select id="sortOption">
+                    <option value="id_asc">ID号从小到大</option>
+                    <option value="id_desc">ID号从大到小</option>
+                    <option value="time_desc">学习时间从后往前</option>
+                    <option value="time_asc">学习时间从前往后</option>
+                    <option value="wrong_desc">错误数从大到小</option>
+                    <option value="wrong_asc">错误数从小到大</option>
+                    <option value="rate_desc">错误率从大到小</option>
+                    <option value="rate_asc">错误率从小到大</option>
+                </select>
+                <button class="btn" style="background-color:#2563eb; color:white; margin-left:10px;" onclick="loadErrorList()">刷新</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>单词</th>
+                        <th>音标</th>
+                        <th>释义</th>
+                        <th>多义短语</th>
+                        <th>派生词</th>
+                        <th>测试次数</th>
+                        <th>错误次数</th>
+                        <th>错误率</th>
+                    </tr>
+                </thead>
+                <tbody id="errorTableBody">
+                    <tr>
+                        <td colspan="9" style="text-align: center; color: #666;">加载中...</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button id="errorPrevBtn">上一页</button>
+                <span id="errorPageInfo"></span>
+                <input type="number" id="errorJumpPageInput" placeholder="页码" min="1">
+                <button id="errorJumpBtn">跳转</button>
+                <button id="errorNextBtn">下一页</button>
+            </div>
+        </div>
     </div>
 
-    <div id="wrongBox" class="hide">
-      <h3>我的错题</h3>
-      <div id="wrongList"></div>
-    </div>
+    <script>
+        // ========== 配置区 ==========
+        const SUPABASE_URL = "https://ujqfiphuffjeihdvlupf.supabase.co";
+        const SUPABASE_ANON_KEY = "sb_publishable_7qutUQOaUp_HKon9uLK6PQ_LkM_Bx0y";
+        const reqHeaders = { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" };
+        // 固定登录密码
+        const LOGIN_PWD = "123456";
 
-    <div id="changePwdBox" class="card hide">
-      <h3>修改密码</h3>
-      <input id="newPwd" placeholder="新密码">
-      <button onclick="saveNewPwd()">保存</button>
-    </div>
-  </div>
-</div>
+        let currentPage = 1;
+        const pageSize = 10;
+        let allWords = [];
+        let testQueue = [];
+        let currentTestIndex = 0;
+        let testCorrectCount = 0;
+        let testWrongCount = 0;
 
-<script>
-//替换成你自己的Vercel域名
-const API = "https://xxx.vercel.app/api/sql";
-let currentUser = null;
-let nowWord = null;
+        // 错误表分页变量
+        let errorData = [];
+        let errorCurrentPage = 1;
+        const errorPageSize = 10;
 
-(async function loadUser(){
-  const res = await fetch(API,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({query:"SELECT id,username FROM users ORDER BY id"})
-  })
-  const json = await res.json();
-  const sel = document.getElementById("userSelect");
-  sel.innerHTML = `<option value="">===选择登录用户===</option>`;
-  json.rows.forEach(u=>sel.innerHTML += `<option value="${u.id}">${u.username}</option>`)
-})()
+        // 登录逻辑
+        function login() {
+            const pwd = document.getElementById('pwdInput').value.trim();
+            const tip = document.getElementById('loginTip');
+            if (pwd === LOGIN_PWD) {
+                // 密码正确，切换到主页面
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('mainPage').style.display = 'block';
+                // 登录后加载单词表
+                loadWords();
+            } else {
+                tip.style.display = 'block';
+            }
+        }
 
-async function login(){
-  const uid = document.getElementById("userSelect").value;
-  const pwd = document.getElementById("pwd").value.trim();
-  if(!uid||!pwd) return alert("请选择用户并填写密码");
-  const res = await fetch(API,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({query:`SELECT id,username FROM users WHERE id=${uid} AND password='${pwd}'`})
-  })
-  const json = await res.json();
-  if(json.rows.length===0) return alert("密码错误");
-  currentUser = json.rows[0];
-  document.getElementById("userBar").innerText = `欢迎：${currentUser.username}`;
-  document.getElementById("loginBox").classList.add("hide");
-  document.getElementById("mainBox").classList.remove("hide");
-  hideAll();
-}
+        // 回车快捷登录
+        document.getElementById('pwdInput').addEventListener('keydown', function(e){
+            if(e.key === 'Enter') login();
+        });
 
-function logout(){
-  currentUser=null;
-  document.getElementById("mainBox").classList.add("hide");
-  document.getElementById("loginBox").classList.remove("hide");
-}
+        // 标签切换
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+                if (btn.dataset.tab === 'wordList') loadWords();
+                if (btn.dataset.tab === 'errorList') loadErrorList();
+            });
+        });
 
-async function goRecite(){hideAll();document.getElementById("reciteBox").classList.remove("hide");await nextWord()}
-async function nextWord(){
-  const res = await fetch(API,{
-    method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({query:"SELECT * FROM words ORDER BY RANDOM() LIMIT 1"})
-  })
-  const json = await res.json();
-  nowWord = json.rows[0];
-  document.getElementById("rWord").innerText = nowWord.word;
-  document.getElementById("rPhon").innerText = nowWord.phonetic||"";
-  document.getElementById("rMean").innerText = "点击翻面查看释义";
-}
-function flipWord(){
-  document.getElementById("rMean").innerText =
-`释义：${nowWord.explain}\n常用搭配：${nowWord.polysemy||"无"}\n派生词：${nowWord.derivative||"无"}`
-}
+        // 单词表加载
+        async function loadWords() {
+            try {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/words?select=*&order=id.asc`, { headers: reqHeaders });
+                allWords = await res.json();
+                document.getElementById('totalWords').textContent = `词库共 ${allWords.length} 个单词`;
 
-async function goTest(){
-  hideAll();document.getElementById("testBox").classList.remove("hide");
-  const res = await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:"SELECT * FROM words ORDER BY RANDOM() LIMIT 1"})})
-  const json = await res.json();
-  nowWord = json.rows[0];
-  document.getElementById("tWord").innerText = `${nowWord.word} /${nowWord.phonetic||""}/`;
-  document.getElementById("tAns").value = "";
-}
-async function checkAns(){
-  const ans = document.getElementById("tAns").value.trim();
-  const ok = ans === nowWord.explain;
-  await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:`INSERT INTO learn_record(user_id,word_id,is_right) VALUES(${currentUser.id},${nowWord.id},${ok})`})})
-  if(!ok){
-    await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:`INSERT INTO wrong_word(user_id,word_id) VALUES(${currentUser.id},${nowWord.id}) ON CONFLICT DO NOTHING`})})
-  }
-  alert(ok?"答对啦！":"答错，释义："+nowWord.explain);
-  goTest();
-}
+                const start = (currentPage - 1) * pageSize;
+                const pageWords = allWords.slice(start, start + pageSize);
+                const tbody = document.getElementById('wordTableBody');
+                tbody.innerHTML = "";
 
-async function goWrong(){
-  hideAll();document.getElementById("wrongBox").classList.remove("hide");
-  const res = await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:`SELECT w.* FROM wrong_word wr JOIN words w ON wr.word_id=w.id WHERE wr.user_id=${currentUser.id}`})})
-  const json = await res.json();
-  let html = "";
-  json.rows.forEach(x=>html += `<div class="wrong-item">${x.word}：${x.explain}</div>`);
-  document.getElementById("wrongList").innerHTML = html;
-}
+                if (pageWords.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">暂无数据</td></tr>';
+                } else {
+                    pageWords.forEach(word => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${word.id}</td>
+                            <td>${word.word}</td>
+                            <td>${word.phonetic || ''}</td>
+                            <td>${word.explain || ''}</td>
+                            <td>${word.polysemy || ''}</td>
+                            <td>${word.derivative || ''}</td>
+                            <td>${word.tag || ''}</td>
+                            <td><button class="btn btn-read" onclick="readWord(this,'${word.word}')">朗读</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
 
-function goChangePwd(){hideAll();document.getElementById("changePwdBox").classList.remove("hide")}
-async function saveNewPwd(){
-  const newPwd = document.getElementById("newPwd").value.trim();
-  if(!newPwd) return alert("填写新密码");
-  await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:`UPDATE users SET password='${newPwd}' WHERE id=${currentUser.id}`})})
-  alert("密码修改成功，下次登录生效");
-  document.getElementById("newPwd").value = "";
-}
+                const total = Math.ceil(allWords.length / pageSize);
+                document.getElementById('pageInfo').textContent = `第 ${currentPage} / ${total} 页`;
+                document.getElementById('prevBtn').disabled = currentPage === 1;
+                document.getElementById('nextBtn').disabled = currentPage >= total;
+            } catch (e) {
+                document.getElementById('wordTableBody').innerHTML = `<tr><td colspan="8" style="color:red;text-align:center;">加载失败</td></tr>`;
+                document.getElementById('totalWords').textContent = `词库加载失败`;
+            }
+        }
 
-function hideAll(){
-  document.getElementById("reciteBox").classList.add("hide");
-  document.getElementById("testBox").classList.add("hide");
-  document.getElementById("wrongBox").classList.add("hide");
-  document.getElementById("changePwdBox").classList.add("hide");
-}
-</script>
+        function readWord(btn, word) {
+            document.querySelectorAll('#wordTableBody tr').forEach(tr => tr.classList.remove('highlight'));
+            btn.closest('tr').classList.add('highlight');
+            const u = new SpeechSynthesisUtterance(word);
+            u.lang = 'en-US';
+            speechSynthesis.speak(u);
+        }
+
+        document.getElementById('prevBtn').onclick = () => { if (currentPage > 1) { currentPage--; loadWords(); } };
+        document.getElementById('nextBtn').onclick = () => {
+            const total = Math.ceil(allWords.length / pageSize);
+            if (currentPage < total) { currentPage++; loadWords(); }
+        };
+        document.getElementById('jumpBtn').onclick = () => {
+            const target = parseInt(document.getElementById('jumpPageInput').value);
+            const total = Math.ceil(allWords.length / pageSize);
+            if (target >= 1 && target <= total) { currentPage = target; loadWords(); }
+        };
+
+        // 学习测试
+        async function startTest() {
+            const sId = +document.getElementById('startId').value;
+            const eId = +document.getElementById('endId').value;
+            const onlyWrong = document.getElementById('onlyWrong').checked;
+
+            let words = await (await fetch(`${SUPABASE_URL}/rest/v1/words?select=*&id=gte.${sId}&id=lte.${eId}`, { headers: reqHeaders })).json();
+            if (onlyWrong) {
+                const recs = await (await fetch(`${SUPABASE_URL}/rest/v1/learnrecord?select=word_id&wrong_num=gt.0`, { headers: reqHeaders })).json();
+                const set = new Set(recs.map(r => r.word_id));
+                words = words.filter(w => set.has(w.id));
+            }
+            testQueue = words;
+            currentTestIndex = 0;
+            testCorrectCount = 0;
+            testWrongCount = 0;
+            document.getElementById('testArea').style.display = 'block';
+            showNextQuestion();
+        }
+
+        function showNextQuestion() {
+            if (currentTestIndex >= testQueue.length) {
+                document.getElementById('testArea').style.display = 'none';
+                const total = testQueue.length;
+                const rate = total > 0 ? (testCorrectCount / total * 100).toFixed(1) : 0;
+                alert(`本次学习测试共 ${total} 个单词\n回答正确 ${testCorrectCount} 个，错误 ${testWrongCount} 个\n正确率 ${rate}%`);
+                return;
+            }
+            const w = testQueue[currentTestIndex];
+            document.getElementById('explainText').textContent = w.explain;
+            document.getElementById('userAnswer').value = '';
+            document.getElementById('resultText').textContent = '';
+            document.getElementById('userAnswer').focus();
+        }
+
+        async function submitAnswer() {
+            const w = testQueue[currentTestIndex];
+            const ans = document.getElementById('userAnswer').value.trim().toLowerCase();
+            const ok = ans === w.word.toLowerCase();
+            document.getElementById('resultText').innerHTML = ok ? '✅ 正确！' : `❌ 错误，正确答案是：${w.word}`;
+            document.getElementById('resultText').className = 'result ' + (ok ? 'correct' : 'wrong');
+
+            if (ok) {
+                testCorrectCount++;
+            } else {
+                testWrongCount++;
+            }
+
+            await updateRecord(w.id, ok);
+            setTimeout(() => { currentTestIndex++; showNextQuestion(); }, 1000);
+        }
+
+        async function updateRecord(wid, ok) {
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/learnrecord?word_id=eq.${wid}`, { headers: reqHeaders });
+            const list = await res.json();
+            const now = new Date().toISOString();
+            if (list.length === 0) {
+                await fetch(`${SUPABASE_URL}/rest/v1/learnrecord`, {
+                    method: 'POST',
+                    headers: { ...reqHeaders, "Prefer": "return=representation" },
+                    body: JSON.stringify({ word_id: wid, test_num: 1, wrong_num: ok ? 0 : 1, last_time: now })
+                });
+            } else {
+                const r = list[0];
+                await fetch(`${SUPABASE_URL}/rest/v1/learnrecord?word_id=eq.${wid}`, {
+                    method: 'PATCH',
+                    headers: { ...reqHeaders, "Prefer": "return=representation" },
+                    body: JSON.stringify({
+                        test_num: r.test_num + 1,
+                        wrong_num: ok ? r.wrong_num : r.wrong_num + 1,
+                        last_time: now
+                    })
+                });
+            }
+        }
+
+        // 错误表（带分页、多义短语/派生词列）
+        async function loadErrorList() {
+            const sort = document.getElementById('sortOption').value;
+            const tbody = document.getElementById('errorTableBody');
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;">加载中...</td></tr>';
+            errorCurrentPage = 1;
+
+            try {
+                const recs = await (await fetch(`${SUPABASE_URL}/rest/v1/learnrecord?select=*&wrong_num=gt.0`, { headers: reqHeaders })).json();
+                if (recs.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;">暂无错误记录</td></tr>';
+                    return;
+                }
+
+                const wordIds = recs.map(r => r.word_id);
+                const words = await (await fetch(`${SUPABASE_URL}/rest/v1/words?select=*&id=in.(${wordIds.join(',')})`, { headers: reqHeaders })).json();
+
+                errorData = recs.map(r => {
+                    const w = words.find(wd => wd.id === r.word_id);
+                    if (!w) return null;
+                    const rate = r.test_num > 0 ? (r.wrong_num / r.test_num * 100).toFixed(1) : 0;
+                    return {
+                        ...w,
+                        test_num: r.test_num,
+                        wrong_num: r.wrong_num,
+                        last_time: r.last_time,
+                        rate: rate
+                    };
+                }).filter(Boolean);
+
+                // 排序
+                switch (sort) {
+                    case 'id_asc': errorData.sort((a, b) => a.id - b.id); break;
+                    case 'id_desc': errorData.sort((a, b) => b.id - a.id); break;
+                    case 'time_asc': errorData.sort((a, b) => new Date(a.last_time) - new Date(b.last_time)); break;
+                    case 'time_desc': errorData.sort((a, b) => new Date(b.last_time) - new Date(a.last_time)); break;
+                    case 'wrong_asc': errorData.sort((a, b) => a.wrong_num - b.wrong_num); break;
+                    case 'wrong_desc': errorData.sort((a, b) => b.wrong_num - a.wrong_num); break;
+                    case 'rate_asc': errorData.sort((a, b) => a.rate - b.rate); break;
+                    case 'rate_desc': errorData.sort((a, b) => b.rate - a.rate); break;
+                }
+
+                renderErrorTable();
+            } catch (e) {
+                tbody.innerHTML = '<tr><td colspan="9" style="color:red;text-align:center;">加载失败</td></tr>';
+            }
+        }
+
+        function renderErrorTable() {
+            const tbody = document.getElementById('errorTableBody');
+            tbody.innerHTML = "";
+            const start = (errorCurrentPage - 1) * errorPageSize;
+            const pageData = errorData.slice(start, start + errorPageSize);
+
+            pageData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.word}</td>
+                    <td>${item.phonetic || ''}</td>
+                    <td>${item.explain || ''}</td>
+                    <td>${item.polysemy || ''}</td>
+                    <td>${item.derivative || ''}</td>
+                    <td>${item.test_num}</td>
+                    <td>${item.wrong_num}</td>
+                    <td>${item.rate}%</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const totalPages = Math.ceil(errorData.length / errorPageSize);
+            document.getElementById('errorPageInfo').textContent = `第 ${errorCurrentPage} / ${totalPages} 页`;
+            document.getElementById('errorPrevBtn').disabled = errorCurrentPage === 1;
+            document.getElementById('errorNextBtn').disabled = errorCurrentPage >= totalPages;
+        }
+
+        document.getElementById('errorPrevBtn').onclick = () => {
+            if (errorCurrentPage > 1) { errorCurrentPage--; renderErrorTable(); }
+        };
+        document.getElementById('errorNextBtn').onclick = () => {
+            const totalPages = Math.ceil(errorData.length / errorPageSize);
+            if (errorCurrentPage < totalPages) { errorCurrentPage++; renderErrorTable(); }
+        };
+        document.getElementById('errorJumpBtn').onclick = () => {
+            const target = parseInt(document.getElementById('errorJumpPageInput').value);
+            const totalPages = Math.ceil(errorData.length / errorPageSize);
+            if (target >= 1 && target <= totalPages) { errorCurrentPage = target; renderErrorTable(); }
+        };
+    </script>
 </body>
 </html>
       </div>
@@ -402,7 +846,7 @@ function hideAll(){
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#loginBox"><span class="nav-number">1.</span> <span class="nav-text">用户登录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wrongBox"><span class="nav-number">1.1.</span> <span class="nav-text">我的错题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#changePwdBox"><span class="nav-number">1.2.</span> <span class="nav-text">修改密码</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#loginPage"><span class="nav-number">1.</span> <span class="nav-text">单词背诵系统 - 登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mainPage"><span class="nav-number">2.</span> <span class="nav-text">单词背诵系统</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
